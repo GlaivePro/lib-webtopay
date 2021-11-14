@@ -23,7 +23,7 @@ class WebToPay_RequestBuilderTest extends PHPUnit_Framework_TestCase {
      * Sets up this test
      */
     public function setUp() {
-        $this->util = $this->getMock('WebToPay_Util', array('encodeSafeUrlBase64'));
+        $this->util = $this->createMock('WebToPay_Util', array('encodeSafeUrlBase64'));
         $this->urlBuilder = $this->getMockBuilder('WebToPay_UrlBuilder')
             ->disableOriginalConstructor()
             ->getMock();
