@@ -115,8 +115,8 @@ class WebToPay {
         }
         printf(
             'Redirecting to <a href="%s">%s</a>. Please wait.',
-            htmlentities($url, ENT_QUOTES, 'UTF-8'),
-            htmlentities($url, ENT_QUOTES, 'UTF-8')
+            htmlentities($url, \ENT_QUOTES, 'UTF-8'),
+            htmlentities($url, \ENT_QUOTES, 'UTF-8')
         );
         if ($exit) {
             exit();
@@ -186,9 +186,9 @@ class WebToPay {
      * @deprecated use validateAndParseData() and check status code yourself
      */
     public static function checkResponse($query, $userData = array()) {
-        $projectId = isset($userData['projectid']) ? $userData['projectid'] : null;
-        $password = isset($userData['sign_password']) ? $userData['sign_password'] : null;
-        $logFile = isset($userData['log']) ? $userData['log'] : null;
+        $projectId = $userData['projectid'] ?? null;
+        $password = $userData['sign_password'] ?? null;
+        $logFile = $userData['log'] ?? null;
 
         try {
             $data = self::validateAndParseData($query, $projectId, $password);
@@ -243,7 +243,7 @@ class WebToPay {
         $smsId = $userData['id'];
         $text = $userData['msg'];
         $password = $userData['sign_password'];
-        $logFile = isset($userData['log']) ? $userData['log'] : null;
+        $logFile = $userData['log'] ?? null;
 
         try {
 
@@ -294,7 +294,7 @@ class WebToPay {
 
         $logline = array(
             $type,
-            isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '-',
+            $_SERVER['REMOTE_ADDR'] ?? '-',
             date('[Y-m-d H:i:s O]'),
             'v' . self::VERSION . ':',
             $msg
@@ -305,7 +305,7 @@ class WebToPay {
         fclose($fp);
 
         // clear big log file
-        if (filesize($logfile) > 1024 * 1024 * pi()) {
+        if (filesize($logfile) > 1024 * 1024 * M_PI) {
             copy($logfile, $logfile.'.old');
             unlink($logfile);
         }

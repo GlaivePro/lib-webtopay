@@ -13,7 +13,7 @@ class WebToPay_UtilTest extends \PHPUnit\Framework\TestCase {
     /**
      * Sets up this test
      */
-    public function setUp(): void {
+    protected function setUp(): void {
         $this->util = new WebToPay_Util();
     }
 

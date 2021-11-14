@@ -64,7 +64,7 @@ WH/7s1IG3gHc08EcYjgZVeZrFKatRYXs8frLsnQPBeuZmQBFxBFUd8L+5vOZo7AP
     /**
      * Sets up this test
      */
-    public function setUp(): void {
+    protected function setUp(): void {
         $this->util = $this->createMock('WebToPay_Util', array('decodeSafeUrlBase64'));
         $this->signChecker = new WebToPay_Sign_SS2SignChecker(self::$publicKey, $this->util);
     }
@@ -94,7 +94,7 @@ WH/7s1IG3gHc08EcYjgZVeZrFKatRYXs8frLsnQPBeuZmQBFxBFUd8L+5vOZo7AP
             ->expects($this->once())
             ->method('decodeSafeUrlBase64')
             ->with('encoded-ss2')
-            ->will($this->returnValue($ss2));
+            ->willReturn($ss2);
 
         $this->assertTrue($this->signChecker->checkSign(array(
             'data' => 'encodedData',
@@ -111,7 +111,7 @@ WH/7s1IG3gHc08EcYjgZVeZrFKatRYXs8frLsnQPBeuZmQBFxBFUd8L+5vOZo7AP
             ->expects($this->once())
             ->method('decodeSafeUrlBase64')
             ->with('encoded-ss2')
-            ->will($this->returnValue('bad-ss2'));
+            ->willReturn('bad-ss2');
 
         $this->assertFalse($this->signChecker->checkSign(array(
             'data' => 'encodedData',

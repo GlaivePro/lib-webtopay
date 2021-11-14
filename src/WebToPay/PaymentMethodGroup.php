@@ -130,7 +130,7 @@ class WebToPay_PaymentMethodGroup {
      * @return null|WebToPay_PaymentMethod
      */
     public function getPaymentMethod($key) {
-        return isset($this->paymentMethods[$key]) ? $this->paymentMethods[$key] : null;
+        return $this->paymentMethods[$key] ?? null;
     }
 
     /**
@@ -142,7 +142,7 @@ class WebToPay_PaymentMethodGroup {
      * @return WebToPay_PaymentMethodGroup
      */
     public function filterForAmount($amount, $currency) {
-        $group = new WebToPay_PaymentMethodGroup($this->groupKey, $this->translations, $this->defaultLanguage);
+        $group = new self($this->groupKey, $this->translations, $this->defaultLanguage);
         foreach ($this->getPaymentMethods() as $paymentMethod) {
             if ($paymentMethod->isAvailableForAmount($amount, $currency)) {
                 $group->addPaymentMethod($paymentMethod);
@@ -159,7 +159,7 @@ class WebToPay_PaymentMethodGroup {
      * @return WebToPay_PaymentMethodGroup
      */
     public function filterForIban($isIban = true) {
-        $group = new WebToPay_PaymentMethodGroup($this->groupKey, $this->translations, $this->defaultLanguage);
+        $group = new self($this->groupKey, $this->translations, $this->defaultLanguage);
         foreach ($this->getPaymentMethods() as $paymentMethod) {
             if ($paymentMethod->isIban() == $isIban) {
                 $group->addPaymentMethod($paymentMethod);

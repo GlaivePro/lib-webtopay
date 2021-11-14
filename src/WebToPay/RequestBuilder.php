@@ -74,7 +74,7 @@ class WebToPay_RequestBuilder {
      * @return string
      */
     public function buildRequestUrlFromData($data) {
-        $language = isset($data['lang']) ? $data['lang'] : null;
+        $language = $data['lang'] ?? null;
         $request = $this->buildRequest($data);
         return $this->urlBuilder->buildForRequest($request, $language);
     }

@@ -136,7 +136,7 @@ class WebToPay_PaymentMethodList {
      * @return null|WebToPay_PaymentMethodCountry
      */
     public function getCountry($countryCode) {
-        return isset($this->countries[$countryCode]) ? $this->countries[$countryCode] : null;
+        return $this->countries[$countryCode] ?? null;
     }
 
     /**
@@ -164,7 +164,7 @@ class WebToPay_PaymentMethodList {
                 throw new WebToPayException('This list is already filtered, use unfiltered list instead');
             }
         } else {
-            $list = new WebToPay_PaymentMethodList($this->projectId, $currency, $this->defaultLanguage, $amount);
+            $list = new self($this->projectId, $currency, $this->defaultLanguage, $amount);
             foreach ($this->getCountries() as $country) {
                 $country = $country->filterForAmount($amount, $currency);
                 if (!$country->isEmpty()) {

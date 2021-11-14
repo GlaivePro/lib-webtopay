@@ -23,7 +23,7 @@ class WebToPay_CallbackValidatorTest extends \PHPUnit\Framework\TestCase {
     /**
      * Sets up this test
      */
-    public function setUp(): void {
+    protected function setUp(): void {
         $this->signer = $this->createMock('WebToPay_Sign_SignCheckerInterface');
         $this->util = $this->createMock('WebToPay_Util', array('decodeSafeUrlBase64', 'parseHttpQuery'));
         $this->validator = new WebToPay_CallbackValidator(123, $this->signer, $this->util);
@@ -37,7 +37,7 @@ class WebToPay_CallbackValidatorTest extends \PHPUnit\Framework\TestCase {
 
         $request = array('data' => 'abcdef', 'sign' => 'qwerty');
 
-        $this->signer->expects($this->once())->method('checkSign')->with($request)->will($this->returnValue(false));
+        $this->signer->expects($this->once())->method('checkSign')->with($request)->willReturn(false);
         $this->util->expects($this->never())->method($this->anything());
 
         $this->validator->validateAndParseData($request);
@@ -54,9 +54,9 @@ class WebToPay_CallbackValidatorTest extends \PHPUnit\Framework\TestCase {
         $request = array('data' => 'abcdef', 'sign' => 'qwerty');
         $parsed = array('projectid' => 456);
 
-        $this->signer->expects($this->once())->method('checkSign')->with($request)->will($this->returnValue(true));
-        $this->util->expects($this->once())->method('decodeSafeUrlBase64')->with('abcdef')->will($this->returnValue('zxc'));
-        $this->util->expects($this->once())->method('parseHttpQuery')->with('zxc')->will($this->returnValue($parsed));
+        $this->signer->expects($this->once())->method('checkSign')->with($request)->willReturn(true);
+        $this->util->expects($this->once())->method('decodeSafeUrlBase64')->with('abcdef')->willReturn('zxc');
+        $this->util->expects($this->once())->method('parseHttpQuery')->with('zxc')->willReturn($parsed);
 
         $this->validator->validateAndParseData($request);
     }
@@ -68,9 +68,9 @@ class WebToPay_CallbackValidatorTest extends \PHPUnit\Framework\TestCase {
         $request = array('data' => 'abcdef', 'sign' => 'qwerty');
         $parsed = array('projectid' => 123, 'someparam' => 'qwerty123', 'type' => 'micro');
 
-        $this->signer->expects($this->once())->method('checkSign')->with($request)->will($this->returnValue(true));
-        $this->util->expects($this->once())->method('decodeSafeUrlBase64')->with('abcdef')->will($this->returnValue('zxc'));
-        $this->util->expects($this->once())->method('parseHttpQuery')->with('zxc')->will($this->returnValue($parsed));
+        $this->signer->expects($this->once())->method('checkSign')->with($request)->willReturn(true);
+        $this->util->expects($this->once())->method('decodeSafeUrlBase64')->with('abcdef')->willReturn('zxc');
+        $this->util->expects($this->once())->method('parseHttpQuery')->with('zxc')->willReturn($parsed);
 
         $this->assertEquals($parsed, $this->validator->validateAndParseData($request));
     }

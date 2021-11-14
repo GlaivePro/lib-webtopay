@@ -18,7 +18,7 @@ class WebToPay_FactoryTest extends \PHPUnit\Framework\TestCase {
     /**
      * Sets up this test
      */
-    public function setUp(): void {
+    protected function setUp(): void {
         $this->factory = new WebToPay_Factory(array(
             'projectId' => '123',
             'password' => 'abc',

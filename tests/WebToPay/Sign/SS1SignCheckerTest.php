@@ -13,7 +13,7 @@ class WebToPay_Sign_SS1SignCheckerTest extends \PHPUnit\Framework\TestCase {
     /**
      * Sets up this test
      */
-    public function setUp(): void {
+    protected function setUp(): void {
         $this->signChecker = new WebToPay_Sign_SS1SignChecker('secret');
     }
 

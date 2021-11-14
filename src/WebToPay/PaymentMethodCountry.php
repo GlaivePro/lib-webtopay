@@ -117,7 +117,7 @@ class WebToPay_PaymentMethodCountry {
      * @return null|WebToPay_PaymentMethodGroup
      */
     public function getGroup($groupKey) {
-        return isset($this->groups[$groupKey]) ? $this->groups[$groupKey] : null;
+        return $this->groups[$groupKey] ?? null;
     }
 
     /**
@@ -151,7 +151,7 @@ class WebToPay_PaymentMethodCountry {
      * @return WebToPay_PaymentMethodCountry
      */
     public function filterForAmount($amount, $currency) {
-        $country = new WebToPay_PaymentMethodCountry($this->countryCode, $this->titleTranslations, $this->defaultLanguage);
+        $country = new self($this->countryCode, $this->titleTranslations, $this->defaultLanguage);
         foreach ($this->getGroups() as $group) {
             $group = $group->filterForAmount($amount, $currency);
             if (!$group->isEmpty()) {
@@ -169,7 +169,7 @@ class WebToPay_PaymentMethodCountry {
      * @return WebToPay_PaymentMethodCountry
      */
     public function filterForIban($isIban = true) {
-        $country = new WebToPay_PaymentMethodCountry($this->countryCode, $this->titleTranslations, $this->defaultLanguage);
+        $country = new self($this->countryCode, $this->titleTranslations, $this->defaultLanguage);
         foreach ($this->getGroups() as $group) {
             $group = $group->filterForIban($isIban);
             if (!$group->isEmpty()) {

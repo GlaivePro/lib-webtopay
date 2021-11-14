@@ -22,7 +22,7 @@ class WebToPay_RequestBuilderTest extends \PHPUnit\Framework\TestCase {
     /**
      * Sets up this test
      */
-    public function setUp(): void {
+    protected function setUp(): void {
         $this->util = $this->createMock('WebToPay_Util', array('encodeSafeUrlBase64'));
         $this->urlBuilder = $this->getMockBuilder('WebToPay_UrlBuilder')
             ->disableOriginalConstructor()
@@ -71,7 +71,7 @@ class WebToPay_RequestBuilderTest extends \PHPUnit\Framework\TestCase {
                     . '&callbackurl=http%3A%2F%2Flocal.test%2F&amount=100&some-other-parameter=abc'
                     . '&version=1.6&projectid=123'
             )
-            ->will($this->returnValue('encoded'));
+            ->willReturn('encoded');
         $this->assertEquals(
             array('data' => 'encoded', 'sign' => md5('encodedsecret')),
             $this->builder->buildRequest(array(
@@ -93,7 +93,7 @@ class WebToPay_RequestBuilderTest extends \PHPUnit\Framework\TestCase {
             ->expects($this->once())
             ->method('encodeSafeUrlBase64')
             ->with('orderid=123&version=1.6&projectid=123&repeat_request=1')
-            ->will($this->returnValue('encoded'));
+            ->willReturn('encoded');
         $this->assertEquals(
             array('data' => 'encoded', 'sign' => md5('encodedsecret')),
             $this->builder->buildRepeatRequest(123)
