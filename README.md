@@ -10,6 +10,13 @@ Install:
 composer require glaivepro/libwebtopay
 ```
 
+## Roadmap
+
+- Remove building (?), composer should be enough
+- Update PHPUnit to 9.3 or above for PHP8.0 support
+- Fix PHP8.1 support
+- Remove legacy support as needed
+
 lib-webtopay -- Original README from the source of the fork.
 ========
 
