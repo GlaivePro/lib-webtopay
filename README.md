@@ -10,6 +10,11 @@ Install:
 composer require glaivepro/libwebtopay
 ```
 
+## Version support
+
+The legacy lib that supports PHP5.5 and includes a built megafile is maintained
+on the `v1` branch.
+
 ## Roadmap
 
 - Remove building (?), composer should be enough
