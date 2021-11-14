@@ -3,7 +3,7 @@
 /**
  * Test for class WebToPay_Sign_SS2SignChecker
  */
-class WebToPay_Sign_SS2SignCheckerTest extends PHPUnit_Framework_TestCase {
+class WebToPay_Sign_SS2SignCheckerTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * Randomly generated private and public keys pair
@@ -64,17 +64,17 @@ WH/7s1IG3gHc08EcYjgZVeZrFKatRYXs8frLsnQPBeuZmQBFxBFUd8L+5vOZo7AP
     /**
      * Sets up this test
      */
-    public function setUp() {
+    public function setUp(): void {
         $this->util = $this->createMock('WebToPay_Util', array('decodeSafeUrlBase64'));
         $this->signChecker = new WebToPay_Sign_SS2SignChecker(self::$publicKey, $this->util);
     }
 
     /**
      * Should throw exception if not all required parameters are passed
-     *
-     * @expectedException WebToPay_Exception_Callback
      */
     public function testCheckSignWithoutInformation() {
+		$this->expectException(WebToPay_Exception_Callback::class);
+
         $this->signChecker->checkSign(array(
             'projectid' => '123',
             'ss1' => 'asd',
