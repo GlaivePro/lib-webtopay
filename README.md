@@ -4,67 +4,57 @@ Fork of `paysera/lib-webtopay` with testing enabled and PHP8.0 support.
 
 Aiming for more maintenance, cleanup, PHP8.1 support etc. if the time allows.
 
-Install:
+Description from the source of the fork:
+
+> The Checkout API (Payment Gateway API) allows for the collection of online payments with many payment methods. 
+> The Checkout API is easy to integrate – simply use one of our methods and the checkout processes will be performed 
+> automatically. The library can be used to check all the necessary security parameters of transferred and received data.
+> More information can be found in [the documentation](https://developers.paysera.com/en/checkout/basic).
+
+## Version support
+
+The `master` branch is intended to be usable on current PHP versions.
+
+The legacy lib that supports PHP 5.5-8.0 and includes a built megafile is
+maintained on the [v1 branch](https://github.com/GlaivePro/lib-webtopay/tree/v1).
+
+## Installation
 
 ```sh
 composer require glaivepro/libwebtopay
 ```
 
-## Version support
+## Development
 
-The legacy lib that supports PHP5.5 and includes a built megafile is maintained
-on the `v1` branch.
+Requires git, PHP and composer. Clone the repo and install dev dependencies:
+
+```sh
+git clone https://github.com/GlaivePro/lib-webtopay.git
+composer update
+```
+
+### Testing
+
+```sh
+composer test
+```
+
+### Code style checking
+
+```sh
+composer cs
+```
 
 ## Roadmap
 
 - Fix PHP8.1 support
 - Convert pseudo-namespaces to real namespaces
-- Clean up autoloading
+- Improve test coverage
+- Remove demo from the archive like [here](https://github.com/paysera/lib-webtopay/pull/2)
 
-lib-webtopay -- Original README from the source of the fork.
-========
+## Demo
 
-The Checkout API (Payment Gateway API) allows for the collection of online payments with many payment methods. 
-The Checkout API is easy to integrate – simply use one of our methods and the checkout processes will be performed 
-automatically. The library can be used to check all the necessary security parameters of transferred and received data.
-More information can be found in [the documentation](https://developers.paysera.com/en/checkout/basic).
-
-Installation
-============
-
-Easiest way to use library is to include merged all-in-one file.
-It is located in base libwebtopay directory, "WebToPay.php".
-In this case you only need this one file.
-Example:
-```php
-<?php
-
-require_once('WebToPay.php');
-
-// Your code goes here
-```
-Alternatively, you can use files in the "src" folder.
-Either set-up autoloader or include file "includes.php" in "src" directory.
-Example:
-```php
-<?php
-
-require_once('libwebtopay/src/includes.php');
-
-// Your code goes here
-```
-Another way to install library is using composer:
-```
-"composer require webtopay/libwebtopay "^1.6"
-```
-
-Testing
-=======
-
-    $ phpunit
-
-Demo
-===============
+> Note: this is inherited from the source of the fork. No plans on active maintenance.
 
 demo_shop is a simple example how you can integrate library to your project.
 It also shows how to get payment methods available for your project and specific amount.
