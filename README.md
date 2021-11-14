@@ -1,6 +1,6 @@
 # GlaivePro/lib-webtopay
 
-Fork of lib-webtopay with testing enabled and PHP8.0 support.
+Fork of `paysera/lib-webtopay` with testing enabled and PHP8.0 support.
 
 Aiming for more maintenance, cleanup, PHP8.1 support etc. if the time allows.
 
