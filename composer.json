@@ -1,8 +1,14 @@
 {
-    "name": "webtopay/libwebtopay",
+    "name": "glaivepro/libwebtopay",
     "description": "PHP Library for Paysera payment gateway integration",
     "license": "LGPL-3.0",
     "authors": [
+        {
+            "name": "Juris Evertovskis",
+            "email": "juris@glaive.pro",
+            "homepage": "https://github.com/tontonsb",
+            "role": "Developer"
+        },
         {
             "name": "Paysera",
             "homepage": "https://www.paysera.com/"
