@@ -4,7 +4,13 @@ Fork of `paysera/lib-webtopay` with testing enabled and PHP8.0 support.
 
 Aiming for more maintenance, cleanup, PHP8.1 support etc. if the time allows.
 
-lib-webtopay
+Install:
+
+```sh
+composer require glaivepro/libwebtopay
+```
+
+lib-webtopay -- Original README from the source of the fork.
 ========
 
 The Checkout API (Payment Gateway API) allows for the collection of online payments with many payment methods. 
