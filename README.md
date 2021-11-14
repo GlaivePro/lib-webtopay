@@ -17,10 +17,9 @@ on the `v1` branch.
 
 ## Roadmap
 
-- Remove building (?), composer should be enough
-- Update PHPUnit to 9.3 or above for PHP8.0 support
 - Fix PHP8.1 support
-- Remove legacy support as needed
+- Convert pseudo-namespaces to real namespaces
+- Clean up autoloading
 
 lib-webtopay -- Original README from the source of the fork.
 ========
